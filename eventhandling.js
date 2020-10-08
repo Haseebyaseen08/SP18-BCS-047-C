@@ -21,8 +21,7 @@ function add(){    //to add a row
     var age=$("#age").val();
     var city=$("#city").val();
 
-
-    if(name!=null && gender!=null && age!=null && city!=null) //not add untill add all values
+    if(name!='' && gender!=null && age!=null && city!='')   
     {
         $("#mytable").append("<tr>"+"<td class='name'>"+name+"</td>"+"<td class='gender'>"+gender+"</td>"+"<td class='age'>"+age+"</td>"+"<td class='city'>"+city+"</td>"+"<td>"+'<button type="button" class="btn btn-warning update">Update</button> <button type="button" class="btn btn-danger del">Delete</button>'+"</td>"+"</tr>");
         
@@ -66,7 +65,7 @@ function add(){    //to add a row
                 });
 
         });
-        
+ 
     }
     else{
         alert("Please fill whole form to add data");
