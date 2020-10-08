@@ -21,23 +21,23 @@ function add(){    //to add a row
     var age=$("#age").val();
     var city=$("#city").val();
 
-    if(name!='' && gender!=null && age!=null && city!='')   
+
+    if(name!='' && gender!=null && age!=null && city!='') //not add untill add all values
     {
         $("#mytable").append("<tr>"+"<td class='name'>"+name+"</td>"+"<td class='gender'>"+gender+"</td>"+"<td class='age'>"+age+"</td>"+"<td class='city'>"+city+"</td>"+"<td>"+'<button type="button" class="btn btn-warning update">Update</button> <button type="button" class="btn btn-danger del">Delete</button>'+"</td>"+"</tr>");
         
-        $("#mytable").on('click',".del", function(){  //event binding of del function
+        $("#mytable").off().on('click',".del", function(){  //event binding of del function
             
             $(this).closest ('tr').remove ();
         });
 
-        $("#mytable").on("click",".update",function(){              //evet binding of update function
+        $("#mytable").off("click",".update").on("click",".update",function(){              //evet binding of update function
             var name=$(this).closest ('tr').find(".name").text();
             var age=$(this).closest ('tr').find(".age").text();
             var city=$(this).closest ('tr').find(".city").text();
             var gender=$(this).closest ('tr').find(".gender").text();
             var index=$(this).closest ('tr').index();
 
-            //console.log(index)
 
                 $("#name").val(name);
                 $("#age").val(age);
@@ -47,12 +47,11 @@ function add(){    //to add a row
                 $(".add").prop("disabled", true);
                 $(".up").removeAttr('disabled');
         
-                $(".up").on("click",function(){
+                $(".up").off().on("click",function(){
                     name=$("#name").val();
                     gender=$("input[name='val']:checked").val();
                     age=$("#age").val();
                     city=$("#city").val();
-                    //console.log(name);
 
                     var x = document.getElementById("mytable").rows[index+1].cells;
                     x[0].innerHTML=name;
@@ -65,7 +64,7 @@ function add(){    //to add a row
                 });
 
         });
- 
+        
     }
     else{
         alert("Please fill whole form to add data");
